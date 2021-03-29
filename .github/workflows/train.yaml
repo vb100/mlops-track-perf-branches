@@ -1,0 +1,26 @@
+name: classification-testing-pipeline
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Train my model'
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          # Your ML workflow goes here
+          pip install -r requirements.txt
+          dvc repro
+          
+          git fetch --prune
+          
+          dvc metrics diff --show-md master > report.md
+          
+          # Add a figure into report
+          echo "## ROC `Graph for the model"
+          cml-publish ROC.png --md >> report.md
+          
+          cml-send-comment report.md
