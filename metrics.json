@@ -1,0 +1,1 @@
+{"accuracy_dummy": 0.5640092391684748, "accuracy_KNN": 0.9305662490375867, "accuracy_logistic-regression": 0.8720515153636172, "AUC_dummy": 0.5, "AUC_logistic-regression": 0.9249724893462834, "AUC_KNN": 0.9753782289032227}

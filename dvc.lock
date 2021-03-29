@@ -1,0 +1,45 @@
+get_data:
+  cmd: python x1_get_data.py
+  deps:
+  - path: x1_get_data.py
+    md5: c7e99a519ccaf7328d46fca59375a09e
+    size: 365
+  outs:
+  - path: test.csv
+    md5: 895d669a208bc687cab6a1e76ce858c4
+    size: 3037688
+  - path: train.csv
+    md5: 335d9c8517f60a8890757447e9ff46ca
+    size: 12193089
+process:
+  cmd: python x2_process_data.py
+  deps:
+  - path: test.csv
+    md5: 895d669a208bc687cab6a1e76ce858c4
+    size: 3037688
+  - path: train.csv
+    md5: 335d9c8517f60a8890757447e9ff46ca
+    size: 12193089
+  - path: x2_process_data.py
+    md5: 1ae8936ac344d620796f66d6903c22cd
+    size: 1891
+  outs:
+  - path: data_processed.csv
+    md5: ce0eb0316a310664342429ecb72f3043
+    size: 7256064
+train:
+  cmd: python x3_train.py
+  deps:
+  - path: data_processed.csv
+    md5: ce0eb0316a310664342429ecb72f3043
+    size: 7256064
+  - path: x3_train.py
+    md5: 0170ff532c516e45336ac6a87302b2db
+    size: 3823
+  outs:
+  - path: ROC.png
+    md5: 420ae207cb14682e1afeb1571c6f03ac
+    size: 35059
+  - path: metrics.json
+    md5: f4b6c236ca1f252be3817b41190ee71a
+    size: 222
