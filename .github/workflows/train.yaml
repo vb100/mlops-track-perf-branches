@@ -20,7 +20,7 @@ jobs:
           dvc metrics diff --show-md master > report.md
           
           # Add a figure into report
-          echo "## ROC `Graph for the model"
+          echo "## ROC Graph for the model"
           cml-publish ROC.png --md >> report.md
           
           cml-send-comment report.md
