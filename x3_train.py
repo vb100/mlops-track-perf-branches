@@ -45,7 +45,7 @@ accuracyDummy = metrics.accuracy_score(y_test, predictionsDummy)       # One of 
 def chooseKNN():
     maxi = 1 #saving the index of the highest score
     max = 0 #saving the value of the highest score
-    for i in range(1,35):
+    for i in range(1,30):
         modelKNN = KNeighborsClassifier(n_neighbors = i, weights='distance')
         modelKNN.fit(X_train, y_train)
         accuracy = modelKNN.score(X_test, y_test)
