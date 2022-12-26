@@ -6,7 +6,7 @@ stages:
     outs:
     - test.csv
     - train.csv
-  process:
+  process_data:
     cmd: python x2_process_data.py
     deps:
     - x2_process_data.py
@@ -14,7 +14,7 @@ stages:
     - train.csv
     outs:
     - data_processed.csv
-  train:
+  train_data:
     cmd: python x3_train.py
     deps:
     - x3_train.py
